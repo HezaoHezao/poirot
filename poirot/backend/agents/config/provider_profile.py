@@ -118,6 +118,14 @@ PROVIDER_PROFILES: list[ProviderProfile] = [
         default_model="nvidia/llama-3.1-nemotron-70b-instruct", default_window=128_000,
         priority=100, is_default=False,
     ),
+    # Novita — 聚合平台，OpenAI 兼容
+    ProviderProfile(
+        name="novita", kind="openai_compat",
+        env_key="NOVITA_API_KEY", env_base_url="NOVITA_BASE_URL", env_model="NOVITA_MODEL",
+        default_base_url="https://api.novita.ai/openai/v1",
+        default_model="deepseek/deepseek-v3.2", default_window=163_840,
+        priority=105, is_default=False,
+    ),
     # Ollama — 本地，无需 API key
     ProviderProfile(
         name="ollama", kind="ollama",

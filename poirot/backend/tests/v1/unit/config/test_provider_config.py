@@ -22,6 +22,14 @@ def test_selects_default_provider_when_not_explicit() -> None:
     assert config.default is True
 
 
+def test_selects_novita_provider() -> None:
+    config = select_provider_config(provider="novita")
+
+    assert config.provider == "novita"
+    assert config.model == "deepseek/deepseek-v3.2"
+    assert config.base_url == "https://api.novita.ai/openai/v1"
+
+
 def test_model_override_keeps_provider_settings() -> None:
     config = select_provider_config(provider="qwen", model="qwen-max")
 
