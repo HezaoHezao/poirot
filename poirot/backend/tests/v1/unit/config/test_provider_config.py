@@ -26,7 +26,7 @@ def test_selects_novita_provider() -> None:
     config = select_provider_config(provider="novita")
 
     assert config.provider == "novita"
-    assert config.model == "deepseek/deepseek-v3.2"
+    assert config.model == "moonshotai/kimi-k3"
     assert config.base_url == "https://api.novita.ai/openai/v1"
 
 

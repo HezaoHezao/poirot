@@ -123,7 +123,7 @@ PROVIDER_PROFILES: list[ProviderProfile] = [
         name="novita", kind="openai_compat",
         env_key="NOVITA_API_KEY", env_base_url="NOVITA_BASE_URL", env_model="NOVITA_MODEL",
         default_base_url="https://api.novita.ai/openai/v1",
-        default_model="deepseek/deepseek-v3.2", default_window=163_840,
+        default_model="moonshotai/kimi-k3", default_window=1_048_576,
         priority=105, is_default=False,
     ),
     # Ollama — 本地，无需 API key
