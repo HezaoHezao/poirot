@@ -471,6 +471,34 @@ core_tools:
 
 修改后执行 `/mcp reload` 重新加载。
 
+### 远程 MCP Server（http）
+
+`transport: http` 直连远程 MCP server，无需本地进程。`headers` 支持 `${VAR}`
+从宿主环境插值，API key 不落盘。
+
+示例：[You.com](https://you.com/docs) 的远程 MCP server（web search，
+key 在 [you.com/platform/api-keys](https://you.com/platform/api-keys) 获取）：
+
+```yaml
+servers:
+  youcom:
+    transport: http
+    url: https://api.you.com/mcp
+    headers:
+      Authorization: "Bearer ${YDC_API_KEY}"
+    enabled: true
+    timeout: 300
+    connect_timeout: 60
+
+fallback_chains:
+  web_search:
+    - youcom:you-search
+    - builtin:ddg_search
+```
+
+免 key 方式（仅基础 `you-search`）：`url: https://api.you.com/mcp?profile=free`，
+去掉 `headers` 即可。
+
 ---
 
 ## 模型与 Provider 切换

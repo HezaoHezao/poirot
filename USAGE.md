@@ -606,6 +606,35 @@ tool_metadata:
     source: mcp
 ```
 
+### Remote MCP Server (http)
+
+`transport: http` connects to a remote MCP server — no local process needed.
+`headers` supports `${VAR}` interpolation from the host environment, so API
+keys stay out of the config file.
+
+Example: the [You.com](https://you.com/docs) MCP server for web search (get a
+key at [you.com/platform/api-keys](https://you.com/platform/api-keys)):
+
+```yaml
+servers:
+  youcom:
+    transport: http
+    url: https://api.you.com/mcp
+    headers:
+      Authorization: "Bearer ${YDC_API_KEY}"
+    enabled: true
+    timeout: 300
+    connect_timeout: 60
+
+fallback_chains:
+  web_search:
+    - youcom:you-search
+    - builtin:ddg_search
+```
+
+For a keyless setup (basic `you-search` only), use
+`url: https://api.you.com/mcp?profile=free` and drop the `headers` block.
+
 ### Reload After Changes
 
 ```

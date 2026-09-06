@@ -477,6 +477,35 @@ core_tools:
 
 変更後`/mcp reload`でリロード。
 
+### リモートMCPサーバー（http）
+
+`transport: http` はローカルプロセス不要でリモートMCPサーバーに直接接続します。
+`headers` は `${VAR}` のホスト環境からの補間に対応しており、API key を
+設定ファイルに書く必要はありません。
+
+例：[You.com](https://you.com/docs) のリモートMCPサーバー（web search。
+key は [you.com/platform/api-keys](https://you.com/platform/api-keys) で取得）：
+
+```yaml
+servers:
+  youcom:
+    transport: http
+    url: https://api.you.com/mcp
+    headers:
+      Authorization: "Bearer ${YDC_API_KEY}"
+    enabled: true
+    timeout: 300
+    connect_timeout: 60
+
+fallback_chains:
+  web_search:
+    - youcom:you-search
+    - builtin:ddg_search
+```
+
+キーレス設定（基本の `you-search` のみ）：
+`url: https://api.you.com/mcp?profile=free` を使い、`headers` を外します。
+
 ---
 
 ## モデル・プロバイダー切替
