@@ -612,6 +612,13 @@ tool_metadata:
 /mcp reload
 ```
 
+### Parallel Search MCP Example
+
+For free web search and page fetching without a Parallel account or API key,
+see the [runnable Parallel Search MCP example](examples/parallel-search/README.md).
+It includes an opt-in HTTP configuration and a direct search/fetch command that
+uses Poirot's MCP loader without an LLM.
+
 ---
 
 ## Model & Provider Switching

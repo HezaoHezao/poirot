@@ -1,0 +1,16 @@
+# Opt-in example: set POIROT_MCP_CONFIG_PATH to this file.
+servers:
+  parallel:
+    transport: http
+    url: https://search.parallel.ai/mcp
+    headers:
+      User-Agent: "Poirot/0.1.0 (https://github.com/HezaoHezao/poirot)"
+    enabled: true
+    timeout: 300
+    connect_timeout: 60
+    tools:
+      include: [web_search, web_fetch]
+
+core_tools:
+  - web_search
+  - web_fetch
